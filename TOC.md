@@ -1,7 +1,7 @@
 - 待添加标题翻译 - Prologue
- - [待添加标题翻译 - Release Notes](prologur/releases.md)
- - [待添加标题翻译 - Upgrade Guide](prologur/upgrade.md)
- - [待添加标题翻译 - Contribution Guide](prologur/contributions.md)
+ - [待添加标题翻译 - Release Notes](prologue/releases.md)
+ - [待添加标题翻译 - Upgrade Guide](prologue/upgrade.md)
+ - [待添加标题翻译 - Contribution Guide](prologue/contributions.md)
 - 待添加标题翻译 - Setup
  - [待添加标题翻译 - Installation](setup/installation.md)
  - [待添加标题翻译 - Configuration](setup/configuration.md)
