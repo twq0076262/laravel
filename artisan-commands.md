@@ -1,197 +1,156 @@
-# HTTP 响应
+# 开发
 
-基本响应
-重定向
-其他响应
-响应宏
+## 简介
 
-## 基本响应
+除了 Artisan 本身提供的命令之外，您也可以为您的应用程序建立属于你自己的命令。你可以将自定义命令存放在 `app/Console/commands` 目录底下；然而，您也可以任意选择存放位置，只要您的命令能够被 `composer.json` 自动加载。
 
-### 从路由返回字串
+## 建立自定义命令
 
-最基本的响应就是从 Laravel 的路由返回字串：
+### 自动创建类（Class）
+
+要创建一个新的自定义命令，您可以使用 `make:console` 这个 Artisan 命令，这将会自动产生一个 Command stub 协助您开始创建您的自定义命令：
+
+#### 自动创建一个新的命令类
 
 ```
-Route::get('/', function()
+php artisan make:console FooCommand
+```
+
+上面的命令将会协助你自动创建一个类，并保存为文件 `app/Console/FooCommand.php`。
+
+在创建自定义命令时，加上 --`command` 这个选项，将可以指定之后在终端机使用此自定义命令时，所要输入的自定义命令名称：
+
+```
+php artisan make:console AssignUsers --command=users:assign
+```
+
+### 撰写自定义命令
+
+一旦你的自定义命令被创建后，你需要填写自定义命令的 `名称（name）` 与 `描述（description）`，您所填写的内容将会被显示在 Artisan 的 `list` 画面中。
+
+当您的自定义命令被执行时，将会调用 fire 方法，您可以在此为自定义命令加入任何的逻辑判断。
+
+### 参数与选项
+
+你可以通过 `getArguments` 与 `getOptions` 为自定义命令自行定义任何需要的参数与选项。这两个方法都会返回一组命令数组，并由选项数组的清单所组成。
+
+当定义 `arguments` 时，该数组值的定义分别如下：
+
+```
+array($name, $mode, $description, $defaultValue)
+```
+
+参数 `mode` 可以是下列其中一项： `InputArgument::REQUIRED` 或 `InputArgument::OPTIONAL`。
+
+当定义 `options` 时，该数组值的定义分别如下：
+
+```
+array($name, $shortcut, $mode, $description, $defaultValue)
+```
+
+对选项而言，参数 `mode` 可以是下列其中一项：`InputOption::VALUE_REQUIRED`, `InputOption::VALUE_OPTIONAL`, `InputOption::VALUE_IS_ARRAY`, `InputOption::VALUE_NONE`。
+
+模式为 `VALUE_IS_ARRAY` 表示调用命令时可以多次使用此选项来传入多个值：
+
+```
+php artisan foo --option=bar --option=baz
+```
+
+模式为 `VALUE_NONE` 则表示将此选项纯粹作为一种有或无的「开关」使用：
+
+```
+php artisan foo --option
+```
+
+### 取得输入值（参数与选项）
+
+当您的自定义命令执行时，您需要让您的应用程序可以访问到这些参数和选项的值，要做到这一点，您可以使用 `argument` 和 `option` 方法：
+
+#### 取得自定义命令被输入的参数
+
+```
+$value = $this->argument('name');
+```
+
+####取得自定义命令被输入的所有参数
+
+```
+$arguments = $this->argument();
+```
+
+#### 取得自定义命令被输入的选项
+
+```
+$value = $this->option('name');
+```
+
+#### 取得自定义命令被输入的所有选项
+
+```
+$options = $this->option();
+```
+
+### 产生输出
+
+想要显示信息到终端屏幕上，您可以使用 `info`、`comment`、`question` 和 `error` 方法。每一种方法将会依据它所代表的目的，分别对应一种适当的 ANSI 颜色。
+
+#### 显示一般消息到终端屏幕
+
+```
+$this->info('Display this on the screen');
+```
+
+#### 显示错误消息到终端屏幕
+
+```
+$this->error('Something went wrong!');
+```
+
+### 询问式输入
+
+您也可以使用 `ask` 和 `confirm` 方法来提示用户进行输入：
+
+#### 提示用户进行输入
+
+```
+$name = $this->ask('What is your name?');
+```
+
+#### 提示用户进行加密输入
+
+```
+$password = $this->secret('What is the password?');
+```
+
+#### 提示用户进行确认
+
+```
+if ($this->confirm('Do you wish to continue? [yes|no]'))
 {
-    return 'Hello World';
-});
-```
-### 建立自定义响应
-
-但是以大部分的路由及控制器所执行的动作来说，你需要返回完整的 `Illuminate\Http\Response` 实例或是一个视图。返回一个完整的 `Response` 实例时，你能够自定义响应的 HTTP 状态码以及响应头。`Response` 实例继承了 `Symfony\Component\HttpFoundation\Response` 类，它提供了很多方法来建立 HTTP 响应。
-
-```
-use Illuminate\Http\Response;
-
-return (new Response($content, $status))
-              ->header('Content-Type', $value);
-```
-
-为了方便起见，你可以使用辅助方法 `response`：
-
-```
-return response($content, $status)
-              ->header('Content-Type', $value);
-```
-
-**1提示： 有关 Response 方法的完整列表可以参照 API 文档 以及 Symfony API 文档.`**
-
-### 在响应送出视图
-
-如果想要使用 `Response` 类的方法，但最终返回视图给用户，你可以使用简便的 `view` 方法：
-
-```
-return response()->view('hello')->header('Content-Type', $type);
-```
-### 附加 Cookies 到响应
-
-```
-return response($content)->withCookie(cookie('name', 'value'));
-```
-### 链式方法
-
-切记，大多数的 `Response` 方法都是可以链式调用的，用以建立流畅的响应：
-```
-return response()->view('hello')->header('Content-Type', $type)
-                 ->withCookie(cookie('name', 'value'));
-```
-
-## 重定向
-
-重定向响应通常是类 `Illuminate\Http\RedirectResponse` 的实例，并且包含用户要重定向至另一个 URL 所需的响应头。
-
-### 返回重定向
-
-有几种方法可以产生 `RedirectResponse` 的实例，最简单的方式就是透过辅助方法 `redirect`。当在测试时，建立一个模拟重定向响应的测试并不常见，所以使用辅助方法通常是可行的：
-
-```
-return redirect('user/login');
-```
-### 返回重定向并且加上快闪数据（ Flash Data ）
-
-通常重定向至新的 URL 时会一并将数据存进一次性 Session。所以为了方便，你可以利用方法连接的方式创建一个 `RedirectResponse` 的实例并将数据存进一次性 Session：
-
-```
-return redirect('user/login')->with('message', 'Login Failed');
-```
-### 返回根据前一个 URL 的重定向
-
-你可能希望将用户重定向至前一个位置，例如当表单提交之后。你可以使用 `back`方法来达成这个目的：
-
-```
-return redirect()->back();
-
-return redirect()->back()->withInput();
-```
-### 返回根据路由名称的重定向
-
-当你调用辅助方法 `redirect` 且不带任何参数时，将会返回 `Illuminate\Routing\Redirector` 的实例，你可以对该实例调用任何的方法。举个例子，要产生一个 `RedirectResponse` 到一个路由名称，你可以使用 `route` 方法：
-
-```
-return redirect()->route('login');
-```
-### 返回根据路由名称的重定向，并给予路由参数赋值
-
-如果你的路由有参数，你可以放进 `route` 方法的第二个参数。
-
-```
-// 路由的 URI 为：profile/{id}
-
-return redirect()->route('profile', [1]);
-```
-如果你要重定向至路由且路由的参数为 Eloquent 模型的「ID」，你可以直接将模型传入，ID 将会自动被提取：
-
-```
-return redirect()->route('profile', [$user]);
-```
-### 返回根据路由名称的重定向，并给予特定名称路由参数赋值
-
-```
-// 路由的 URI 为：profile/{user}
-
-return redirect()->route('profile', ['user' => 1]);
-```
-### 返回根据控制器动作的重定向
-
-既然可以产生 `RedirectResponse` 的实例并重定向至路由名称，同样的也可以重定向至控制器动作：
-
-```
-return redirect()->action('App\Http\Controllers\HomeController@index');
-```
-**`提示： 如果你已经通过 URL::setRootControllerNamespace 注册了根控制器的命名空间，那么就不需要对 action() 方法内的控制器指定完整的命名空间。`**
-### 返回根据控制器动作的重定向，并给予参数赋值
-
-```
-return redirect()->action('App\Http\Controllers\UserController@profile', [1]);
-```
-### 返回根据控制器动作的重定向，并给予特定名称参数赋值
-
-```
-return redirect()->action('App\Http\Controllers\UserController@profile', ['user' => 1]);
-```
-
-## 其他响应
-
-使用辅助方法 `response` 可以轻松的产生其他类型的响应实例。当你调用辅助方法 `response` 且不带任何参数时，将会返回 `Illuminate\Contracts\Routing\ResponseFactory Contract` 的实做。Contract 提供了一些有用的方法来产生响应。
-
-### 建立 JSON 响应
-
-`json` 方法会自动将响应头的 `Content-Type` 配置为 `application/json`：
-
-```
-return response()->json(['name' => 'Abigail', 'state' => 'CA']);
-```
-### 建立 JSONP 响应
-
-```
-return response()->json(['name' => 'Abigail', 'state' => 'CA'])
-                 ->setCallback($request->input('callback'));
-```
-
-### 建立文件下载的响应
-
-```
-return response()->download($pathToFile);
-
-return response()->download($pathToFile, $name, $headers);
-
-return response()->download($pathToFile)->deleteFileAfterSend(true);
-```
-
-**`＊＊提醒：＊＊管理文件下载的扩展包，Symfony HttpFoundation，要求下载文件名必须为 ASCII。`**
-
-## 响应宏
-
-如果你想要自定义可以在很多路由和控制器重复使用的响应，你可以使用 `Illuminate\Contracts\Routing\ResponseFactory` 实做的方法 `macro`。
-
-举个例子，来自服务提供者的 `boot` 方法:
-
-```
-<?php namespace App\Providers;
-
-use Response;
-use Illuminate\Support\ServiceProvider;
-
-class ResponseMacroServiceProvider extends ServiceProvider {
-
-    /**
-     * Perform post-registration booting of services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        Response::macro('caps', function($value) use ($response)
-        {
-            return $response->make(strtoupper($value));
-        });
-    }
-
+    //
 }
 ```
-`macro` 函数第一个参数为宏名称，第二个参数为闭包函数。闭包函数会在 `ResponseFactory`的实做或者辅助方法 `response` 调用宏名称的时候被执行：
+
+您也可以指定一个默认值给 `confirm` 方法，可以是 `true` 或 `false`：
 
 ```
-return response()->caps('foo');
+$this->confirm($question, true);
 ```
+
+### 调用其它命令
+
+有时候您可能希望在您的命令内部调用其它命令，此时您可以使用 `call` 方法：
+
+```
+$this->call('command:name', ['argument' => 'foo', '--option' => 'bar']);
+```
+
+## 注册自定义命令
+
+### 注册一个 Artisan 命令
+
+一旦你的自定义命令撰写完成后，你需要将它注册于 Artisan 它才能被使用。这通常位于 `app/Console/Kernel.php` 这个文件中。在此文件的 `commands` 属性，你会找到一份命令的清单。若要注册你的自定义命令，很简单的你只要将它加入清单中。当 Artisan 启动时，被列于此属性中的所有命令都将被 [service container](http://laravel.com/docs/5.0/container) 解析，并且被注册于 Artisan 。
+
+
+
+
