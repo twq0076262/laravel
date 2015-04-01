@@ -1,9 +1,10 @@
 # 发行说明
 
-Laravel 5.0
+Laravel 5.0(#custom_types)
 Laravel 4.2
 Laravel 4.1
 
+<a name="custom_types"></a>
 ## Laravel 5.0
 
 Laravel 5.0 在默认的项目上引进了新的应用程序架构。新的架构提供了更好的功能来构建健壮的 Laravel 应用程序，以及在应用程序中全面采用新的自动加载标准（ PSR-4 ）。首先，来查看一些主要变更：
