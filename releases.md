@@ -1,9 +1,5 @@
 # 发行说明
 
-Laravel 5.0(#custom_types)
-Laravel 4.2
-Laravel 4.1
-
 <a name="custom_types"></a>
 ## Laravel 5.0
 

@@ -1,10 +1,5 @@
 # Contracts
 
-简介
-为什么用 Contracts？
-Contract 参考
-如何使用 Contracts
-
 ## 简介
 
 Laravel 的 Contracts 是一组定义了框架核心服务的接口（ interfaces ）。例如，`Queue` contract 定义了队列任务所需要的方法，而 `Mailer` contract 定义了发送 e-mail 需要的方法。
