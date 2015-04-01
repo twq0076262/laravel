@@ -1,9 +1,5 @@
 # Laravel 安装指南
 
-安装 Composer
-安装 Laravel
-环境需求
-
 ## 安装 Composer
 
 Laravel 框架使用 Composer 来管理其依赖性。所以，在你使用 Laravel 之前，你必须确认在你电脑上是否安装了 Composer。

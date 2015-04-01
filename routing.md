@@ -1,14 +1,5 @@
 # HTTP 路由
 
-基本路由
-CSRF 保护
-方法欺骗
-路由参数
-命名路由
-路由群组
-路由模型绑定
-抛出 404 错误
-
 ## 基本路由
 
 您将在 `app/Http/routes.php` 中定义应用中的大多数路由，这个文件加载了 `App\Providers\RouteServiceProvider` 类。 大多数基本的 Laravel 路由都只接受一个 URI 和 一个 `闭包(Closure)` 参数：

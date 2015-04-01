@@ -1,12 +1,5 @@
 # Laravel Homestead
 
-介绍
-内置软件
-安装与配置
-常见用法
-连接端口
-Blackfire Profiler
-
 ## 介绍
 
 Laravel 致力于让 PHP 开发体验更愉快，也包含你的本地开发环境。Vagrant 提供了一个简单、优雅的方式来管理与供应虚拟机。
