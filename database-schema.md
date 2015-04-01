@@ -1,7 +1,7 @@
 - 待添加标题翻译 - Prologue
- - [待添加标题翻译 - Release Notes](prologue/releases.md)
- - [待添加标题翻译 - Upgrade Guide](prologue/upgrade.md)
- - [待添加标题翻译 - Contribution Guide](prologue/contributions.md)
+ - [待添加标题翻译 - Release Notes](prologur/releases.md)
+ - [待添加标题翻译 - Upgrade Guide](prologur/upgrade.md)
+ - [待添加标题翻译 - Contribution Guide](prologur/contributions.md)
 - 待添加标题翻译 - Setup
  - [待添加标题翻译 - Installation](setup/installation.md)
  - [待添加标题翻译 - Configuration](setup/configuration.md)
@@ -44,13 +44,13 @@
  - [待添加标题翻译 - Templates](services/templates.md)
  - [待添加标题翻译 - Unit Testing](services/testing.md)
  - [待添加标题翻译 - Validation](services/validation.md)
-- 数据库 - Database
- - [基本用法 - Basic Usage](database.md)
- - [查询构造器 - Query Builder](database-queries.md)
- - [Eloquent ORM - Eloquent ORM](database-eloquent.md)
- - [结构生成器 - Schema Builder](database-schema.md)
- - [迁移与数据填充 - Migrations & Seeding](database-migrations.md)
- - [Redis](database-redis.md)
-- Artisan 命令行工具 - Artisan CLI
- - [概览 - Overview](artisan-overview.md)
- - [开发 - Development](artisan-commands.md)
+- 待添加标题翻译 - Database
+ - [待添加标题翻译 - Basic Usage](database/database.md)
+ - [待添加标题翻译 - Query Builder](database/queries.md)
+ - [待添加标题翻译 - Eloquent ORM](database/eloquent.md)
+ - [待添加标题翻译 - Schema Builder](database/schema.md)
+ - [待添加标题翻译 - Migrations & Seeding](database/migrations.md)
+ - [待添加标题翻译 - Redis](database/redis.md)
+ - 待添加标题翻译 - Artisan CLI
+ - [待添加标题翻译 - Overview](artisan-cli/artisan.md)
+ - [待添加标题翻译 - Development](database/commands.md)
