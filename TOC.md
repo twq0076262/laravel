@@ -51,6 +51,6 @@
  - [待添加标题翻译 - Schema Builder](database/schema.md)
  - [待添加标题翻译 - Migrations & Seeding](database/migrations.md)
  - [待添加标题翻译 - Redis](database/redis.md)
- - 待添加标题翻译 - Artisan CLI
- - [待添加标题翻译 - Overview](artisan-cli/artisan.md)
- - [待添加标题翻译 - Development](database/commands.md)
+- Artisan 命令行工具 - Artisan CLI
+ - [概览 - Overview](artisan-overview.md)
+ - [开发 - Development](artisan-commands.md)
