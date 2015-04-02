@@ -149,7 +149,7 @@ $this->call('command:name', ['argument' => 'foo', '--option' => 'bar']);
 
 ### 注册一个 Artisan 命令
 
-一旦你的自定义命令撰写完成后，你需要将它注册于 Artisan 它才能被使用。这通常位于 `app/Console/Kernel.php` 这个文件中。在此文件的 `commands` 属性，你会找到一份命令的清单。若要注册你的自定义命令，很简单的你只要将它加入清单中。当 Artisan 启动时，被列于此属性中的所有命令都将被 [service container](http://laravel.com/docs/5.0/container) 解析，并且被注册于 Artisan 。
+一旦你的自定义命令撰写完成后，你需要将它注册于 Artisan 它才能被使用。这通常位于 `app/Console/Kernel.php` 这个文件中。在此文件的 `commands` 属性，你会找到一份命令的清单。若要注册你的自定义命令，很简单的你只要将它加入清单中。当 Artisan 启动时，被列于此属性中的所有命令都将被 [service container](container.md) 解析，并且被注册于 Artisan 。
 
 
 
