@@ -47,7 +47,7 @@
 - 数据库 - Database
  - [基本用法 - Basic Usage](database.md)
  - [查询构造器 - Query Builder](queries.md)
- - [Eloquent ORM - Eloquent ORM](eloquent.md)
+ - [Eloquent ORM](eloquent.md)
  - [结构生成器 - Schema Builder](schema.md)
  - [迁移与数据填充 - Migrations & Seeding](migrations.md)
  - [Redis](redis.md)
