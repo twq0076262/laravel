@@ -399,78 +399,79 @@ return redirect('register')->withErrors($validator, 'login');
 *   [Unique (Database)](#rule-unique)
 *   [URL](#rule-url)
 
+<a name="rule-accepted"></a>
 #### accepted
 
 字段值为_yes_,_on_, 或是_1_ 时，验证才会通过。这在确认"服务条款"是否同意时很有用。
-
+<a name="rule-active-url"></a>
 #### active_url
 
 字段值通过 PHP 函数`checkdnsrr` 来验证是否为一个有效的网址。
-
+<a name="rule-after"></a>
 #### after:_date_
 
 验证字段是否是在指定日期之后。这个日期将会使用 PHP`strtotime` 函数验证。
-
+<a name="rule-alpha"></a>
 #### alpha
 
 字段仅全数为字母字串时通过验证。
-
+<a name="rule-alpha-dash"></a>
 #### alpha_dash
 
 字段值仅允许字母、数字、破折号（-）以及底线（_）
-
+<a name="rule-alpha-num"></a>
 #### alpha_num
 
 字段值仅允许字母、数字
-
+<a name="rule-array"></a>
 #### array
 
 字段值仅允许为数组
-
+<a name="rule-before"></a>
 #### before:_date_
 
 验证字段是否是在指定日期之前。这个日期将会使用 PHP`strtotime` 函数验证。
-
+<a name="rule-between"></a>
 #### between:_min_,_max_
 
 字段值需介于指定的_min_ 和_max_ 值之间。字串、数值或是文件都是用同样的方式来进行验证。
-
+<a name="rule-confirmed"></a>
 #### confirmed
 
 字段值需与对应的字段值`foo_confirmation` 相同。例如，如果验证的字段是`password` ，那对应的字段`password_confirmation` 就必须存在且与`password` 字段相符。
-
+<a name="rule-date"></a>
 #### date
 
 字段值通过 PHP`strtotime` 函数验证是否为一个合法的日期。
-
+<a name="rule-date-format"></a>
 #### date_format:_format_
 
 字段值通过 PHP`date_parse_from_format` 函数验证符合_format_ 制定格式的日期是否为合法日期。
-
+<a name="rule-different"></a>
 #### different:_field_
 
 字段值需与指定的字段_field_ 值不同。
-
+<a name="rule-digits"></a>
 #### digits:_value_
 
 字段值需为数字且长度需为_value_。
-
+<a name="rule-digits-between"></a>
 #### digits_between:_min_,_max_
 
 字段值需为数字，且长度需介于_min_ 与_max_ 之间。
-
+<a name="rule-boolean"></a>
 #### boolean
 
 字段必须可以转换成布尔值，可接受的值为`true`,`false`,`1`,`0`,`"1"`,`"0"`。
-
+<a name="rule-email"></a>
 #### email
 
 字段值需符合 email 格式。
-
+<a name="rule-exists"></a>
 #### exists:_table_,_column_
 
 字段值需与存在于数据库_table_ 中的_column_ 字段值其一相同。
-
+<a name="rule-exists"></a>
 #### Exists 规则的基本使用方法
 
 ```
@@ -494,27 +495,27 @@ return redirect('register')->withErrors($validator, 'login');
 ```
 'email' => 'exists:staff,email,deleted_at,NULL'
 ```
-
+<a name="rule-image"></a>
 #### image
 
 文件必需为图片(jpeg, png, bmp, gif 或 svg)
-
+<a name="rule-in"></a>
 #### in:_foo_,_bar_,...
 
 字段值需符合事先给予的清单的其中一个值
-
+<a name="rule-integer"></a>
 #### integer
 
 字段值需为一个整数值
-
+<a name="rule-ip"></a>
 #### ip
 
 字段值需符合 IP 位址格式。
-
+<a name="rule-max"></a>
 #### max:_value_
 
 字段值需小于等于_value_。字串、数字和文件则是判断`size` 大小。
-
+<a name="rule-mimes"></a>
 #### mimes:_foo_,_bar_,...
 
 文件的 MIME 类需在给定清单中的列表中才能通过验证。
@@ -524,61 +525,61 @@ return redirect('register')->withErrors($validator, 'login');
 ```
 'photo' => 'mimes:jpeg,bmp,png'
 ```
-
+<a name="rule-min"></a>
 #### min:_value_
 
 字段值需大于等于_value_。字串、数字和文件则是判断`size` 大小。
-
+<a name="rule-not-in"></a>
 #### not_in:_foo_,_bar_,...
 
 字段值不得为给定清单中其一。
-
+<a name="rule-numeric"></a>
 #### numeric
 
 字段值需为数字。
-
+<a name="rule-regex"></a>
 #### regex:_pattern_
 
 字段值需符合给定的正规表示式。
 
 **注意:** 当使用`regex`模式时，您必须使用数组来取代"|"作为分隔，尤其是当正规表示式中含有"|"字串。
-
+<a name="rule-required"></a>
 #### required
 
 字段值为必填。
-
+<a name="rule-required-if"></a>
 #### required_if:_field_,_value_
 
 字段值在_field_ 字段值为_value_ 时为必填。
-
+<a name="rule-required-with"></a>
 #### required_with:_foo_,_bar_,...
 
 字段值_仅在_ 任一指定字段有值情况下为必填。
-
+<a name="rule-required-with-all"></a>
 #### required_with_all:_foo_,_bar_,...
 
 字段值_仅在_ 所有指定字段皆有值情况下为必填。
-
+<a name="rule-required-without"></a>
 #### required_without:_foo_,_bar_,...
 
 字段值_仅在_ 任一指定字段没有值情况下为必填。
-
+<a name="rule-required-without-all"></a>
 #### required_without_all:_foo_,_bar_,...
 
 字段值_仅在_ 所有指定字段皆没有值情况下为必填。
-
+<a name="rule-same"></a>
 #### same:_field_
 
 字段值需与指定字段_field_ 等值。
-
+<a name="rule-size"></a>
 #### size:_value_
 
 字段值的尺寸需符合给定_value_ 值。对于字串来说，_value_ 为需符合的字串长度。对于数字来说，_value_ 为需符合的整数值。对于文件来说，_value_ 为需符合的文件大小（单位 kb)。
-
+<a name="rule-timezone"></a>
 #### timezone
 
 字段值通过 PHP`timezone_identifiers_list` 函数来验证是否为有效的时区。
-
+<a name="rule-unique"></a>
 #### unique:_table_,_column_,_except_,_idColumn_
 
 字段值在给定的数据库中需为唯一值。如果`column（字段）` 选项没有指定，将会使用字段名称。
@@ -610,7 +611,7 @@ return redirect('register')->withErrors($validator, 'login');
 ```
 
 上述规则为只有`account_id` 为`1` 的数据列会做唯一规则的验证。
-
+<a name="rule-url"></a>
 #### url
 
 字段值需符合 URL 的格式。

@@ -65,7 +65,7 @@ return redirect('user/login');
 ```
 ### 返回重定向并且加上快闪数据（ Flash Data ）
 
-通常重定向至新的 URL 时会一并将数据存进一次性 Session。所以为了方便，你可以利用方法连接的方式创建一个 `RedirectResponse` 的实例并将数据存进一次性 Session：
+通常重定向至新的 URL 时会一并将[数据存进一次性 Session](session.md)。所以为了方便，你可以利用方法连接的方式创建一个 `RedirectResponse` 的实例并将数据存进一次性 Session：
 
 ```
 return redirect('user/login')->with('message', 'Login Failed');
@@ -109,7 +109,7 @@ return redirect()->route('profile', ['user' => 1]);
 ```
 ### 返回根据控制器动作的重定向
 
-既然可以产生 `RedirectResponse` 的实例并重定向至路由名称，同样的也可以重定向至控制器动作：
+既然可以产生 `RedirectResponse` 的实例并重定向至路由名称，同样的也可以重定向至[控制器动作](controllers.md)：
 
 ```
 return redirect()->action('App\Http\Controllers\HomeController@index');
@@ -160,7 +160,7 @@ return response()->download($pathToFile)->deleteFileAfterSend(true);
 
 如果你想要自定义可以在很多路由和控制器重复使用的响应，你可以使用 `Illuminate\Contracts\Routing\ResponseFactory` 实做的方法 `macro`。
 
-举个例子，来自服务提供者的 `boot` 方法:
+举个例子，来自[服务提供者的](providers.md) `boot` 方法:
 
 ```
 <?php namespace App\Providers;

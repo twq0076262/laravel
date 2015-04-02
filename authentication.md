@@ -51,7 +51,7 @@ class AuthController extends Controller {
 }
 ```
 
-`attempt` 方法可以接受由键值对组成的数组作为第一个参数。`password` 的值会先进行 哈希。数组中的其他 值会被用来查询数据表里的用户。所以，在上面的示例中，会根据 `email` 列的值找出用户。如果找到该用户，会比对数据库中存储的哈希过的密码以及数组中的哈希过后的 `password`值。假设两个哈希后的密码相同，会重新为用户启动认证通过的 session。
+`attempt` 方法可以接受由键值对组成的数组作为第一个参数。`password` 的值会先进行[哈希](hashing.md)。数组中的其他 值会被用来查询数据表里的用户。所以，在上面的示例中，会根据 `email` 列的值找出用户。如果找到该用户，会比对数据库中存储的哈希过的密码以及数组中的哈希过后的 `password`值。假设两个哈希后的密码相同，会重新为用户启动认证通过的 session。
 
 如果认证成功， `attempt` 将会返回 `true`。否则则返回 `false`。
 
@@ -144,7 +144,7 @@ Auth::logout();
 
 ### 认证事件
 
-当 `attempt` 方法被调用时，`auth.attempt` 事件 会被触发。假设用户尝试认证成功并且登陆了，`auth.login` 事件会被触发。
+当 `attempt` 方法被调用时，`auth.attempt` 事件 会被触发。假设用户尝试认证成功并且登陆了，`auth.login` [事件](events.md)会被触发。
 
 
 ## 取得经过认证的用户
@@ -202,7 +202,7 @@ class ProfileController extends Controller {
 }
 ```
 
-第三，你可以使用 `Illuminate\Contracts\Auth\Authenticatable contract` 类型提示。这个类型提示可以用在控制器的构造方法，控制器的其他方法，或是其他可以通过服务容器 解析的类的构造方法：
+第三，你可以使用 `Illuminate\Contracts\Auth\Authenticatable contract` 类型提示。这个类型提示可以用在控制器的构造方法，控制器的其他方法，或是其他可以通过[服务容器](container.md) 解析的类的构造方法：
 
 ```
 <?php namespace App\Http\Controllers;
@@ -259,7 +259,7 @@ Route::get('profile', ['middleware' => 'auth.basic', function()
 
 ### 设定无状态的 HTTP 基本过滤器
 
-你可能想要使用 HTTP 基本认证，但不会在 session 里设置用户身份的 cookie，这在 API 认证时特別有用。如果要這樣做，定义一个中间件并调用 `onceBasic` 方法：
+你可能想要使用 HTTP 基本认证，但不会在 session 里设置用户身份的 cookie，这在 API 认证时特別有用。如果要這樣做，[定义一个中间件](middleware.md)并调用 `onceBasic` 方法：
 
 ```
 public function handle($request, Closure $next)
@@ -303,7 +303,7 @@ protected $redirectTo = '/dashboard';
 
 ## 第三方登陆认证
 
-除了传统的以表单进行的认证，Laravel 还提供了简单、易用的方式，使用 Laravel Socialite 进行 OAuth 认证。Socialite 目前支持的认证有 Facebook、 Twitter、Google、以及GitHub 和 Bitbucket 。
+除了传统的以表单进行的认证，Laravel 还提供了简单、易用的方式，使用 [Laravel Socialite](https://github.com/laravel/socialite) 进行 OAuth 认证。Socialite 目前支持的认证有 Facebook、 Twitter、Google、以及GitHub 和 Bitbucket 。
 
 如果要开始使用第三方认证，请将下面的代码加入到你的 `composer.json`文件內：
 

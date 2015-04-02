@@ -68,7 +68,7 @@
     $values = Redis::lrange('names', 5, 10);
 ```
 
-> **提示：** 也可以使用 Redis 作为 Laravel 的[缓存](../cache) 和[会话](../session) 驱动。
+> **提示：** 也可以使用 Redis 作为 Laravel 的[缓存](cache.md) 和[会话](session.md) 驱动。
 
 ## 管道
 

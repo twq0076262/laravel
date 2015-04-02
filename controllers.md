@@ -173,14 +173,16 @@ Route::resource('photo', 'PhotoController');
 
 ### 由资源控制器处理的行为
 
-动词	路径	行为	路由名称
-GET	/photo	索引	photo.index
-GET	/photo/create	创建	photo.create
-POST	/photo	保存	photo.store
-GET	/photo/{photo}	显示	photo.show
-GET	/photo/{photo}/edit	编辑	photo.edit
-PUT/PATCH	/photo/{photo}	更新	photo.update
-DELETE	/photo/{photo}	删除	photo.destroy
+
+| 动词        | 路径                  | 行为 | 路由名称          |
+| --------- | ------------------- | -- | ------------- |
+| GET       | /photo              | 索引 | photo.index   |
+| GET       | /photo/create       | 创建 | photo.create  |
+| POST      | /photo              | 保存 | photo.store   |
+| GET       | /photo/{photo}      | 显示 | photo.show    |
+| GET       | /photo/{photo}/edit | 编辑 | photo.edit    |
+| PUT/PATCH | /photo/{photo}      | 更新 | photo.update  |
+| DELETE    | /photo/{photo}      | 删除 | photo.destroy |
 
 ### 自定义资源路由
 
@@ -238,7 +240,7 @@ Route::resource('photos', 'PhotoController');
 
 ### 构造器注入
 
-Laravel 服务容器 用于解析所有的 Laravel 控制器。因此，你可以在控制器所需要的构造器中，对依赖作任何的类型限制。
+Laravel [服务容器](container.md) 用于解析所有的 Laravel 控制器。因此，你可以在控制器所需要的构造器中，对依赖作任何的类型限制。
 
 ```
 <?php namespace App\Http\Controllers;
@@ -266,7 +268,7 @@ class UserController extends Controller {
 
 }
 ```
-当然了，你也可以对任何的 Laravel contract 作类型限制。只要容器能解析它，你就可以对它作类型限制。
+当然了，你也可以对任何的 [Laravel contract](contracts.md) 作类型限制。只要容器能解析它，你就可以对它作类型限制。
 
 ### 方法注入
 

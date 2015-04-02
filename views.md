@@ -50,7 +50,7 @@ $view = view('greetings', $data);
 ```
 ### 把数据共享给所有视图
 
-有时候你可能需要共享一些数据给你的所有视图，你有很多个选择：`view` 辅助方法；`Illuminate\Contracts\View\Factory`合约 (contract)；在 视图组件 (view composer) 内使用通配符。
+有时候你可能需要共享一些数据给你的所有视图，你有很多个选择：`view` 辅助方法；`Illuminate\Contracts\View\Factory`[合约 (contract)](contracts.md)；在 [视图组件 (view composer)](#view_composer) 内使用通配符。
 
 这里有个 `view` 辅助方法的例子：
 
@@ -82,6 +82,7 @@ if (view()->exists('emails.customer'))
 ```
 return view()->file($pathToFile, $data);
 ```
+<a name="view_composer"></a>
 ## 视图组件
 
 视图组件就是在视图被渲染前，会调用的闭包或类方法。如果你想在每次渲染某些视图时绑定数据，视图组件可以把这样的程序逻辑组织在同一个地方。

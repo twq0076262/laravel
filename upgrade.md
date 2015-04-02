@@ -13,7 +13,7 @@ $compiledPath = DIR.'/../vendor/compiled.php';
 
 推荐的升级方式是建立一个全新的 Laravel `5.0` 项目，然后复制您在 `4.2` 的文件到此新的应用程序，这将包含控制器、路由、Eloquent 模型、Artisan 命令（Asset）、资源和关于此应用程序的其他特定文件。
 
-最开始，安装新的 Laravel 5 应用程序到新的本地目录下，我们将详细探讨迁移各部分的过程。
+最开始，[安装新的 Laravel 5 应用程序](installation.md)到新的本地目录下，我们将详细探讨迁移各部分的过程。
 
 ### Composer 依赖与组件
 
@@ -33,11 +33,10 @@ $compiledPath = DIR.'/../vendor/compiled.php';
 
 此外，复制原先自定义的 `.env.php` 文件，并修改为 `.env` (本机环境的真实设置值) 和 `.env.example` (给其他团队成员的示例)。
 
-更多关于环境设置值，请见完整文档。
+更多关于环境设置值，请见[完整文档](configuration.md)。
 
-```
-注意: 在部署 Laravel 5 应用程序之前，您需要在正式主机上放置 .env 文件并设置适当的值。
-```
+
+**`注意: 在部署 Laravel 5 应用程序之前，您需要在正式主机上放置 .env 文件并设置适当的值。`**
 #### 设置文件
 
 Laravel 5.0 不再使用 `app/config/{environmentName}/` 目录结构来提供对应该环境的设置文件，取而代之的是，将环境对应的设置值复制到 `.env`，然后在设置文件使用 env('key', 'default value') 来访问，您可以在 `config/database.php` 文件内看到相关范例。
@@ -66,7 +65,7 @@ Laravel 5 并没有将过滤器移除，您一样可以使用 `before` 和 `afte
 
 ### 全局 CSRF
 
-默认情况下，所有路由都会使用CSRF 保护。若想关闭他们，或是在指定在特定路由开启，请移除 `App\Http\Kernel` 中 `middleware` 数组内的这一行：
+默认情况下，所有路由都会使用[CSRF 保护](routing.md)。若想关闭他们，或是在指定在特定路由开启，请移除 `App\Http\Kernel` 中 `middleware` 数组内的这一行：
 
 ```
 'App\Http\Middleware\VerifyCsrfToken',
@@ -76,7 +75,7 @@ Laravel 5 并没有将过滤器移除，您一样可以使用 `before` 和 `afte
 ```
 'csrf' => 'App\Http\Middleware\VerifyCsrfToken',
 ```
-现在，您可于路由内使用 `['middleware' => 'csrf']` 即可个别添加中间件到路由/控制器。了解更多关于中间件，请见完整文档。
+现在，您可于路由内使用 `['middleware' => 'csrf']` 即可个别添加中间件到路由/控制器。了解更多关于中间件，请见[完整文档](middleware.md)。
 
 ### Eloquent 模型
 
@@ -86,7 +85,7 @@ Laravel 5 并没有将过滤器移除，您一样可以使用 `before` 和 `afte
 
 #### Eloquent 缓存
 
-Eloquent 不再提供 `remember` 方法来缓存查询。现在你需要手动使用 `Cache::remember` 方法快速缓存。了解更多关于缓存，请见完整文档。
+Eloquent 不再提供 `remember` 方法来缓存查询。现在你需要手动使用 `Cache::remember` 方法快速缓存。了解更多关于缓存，请见[完整文档](cache.md)。
 
 ### 会员认证模型
 
@@ -138,7 +137,7 @@ use Authenticatable, CanResetPassword;
 
 ### 全局 IoC 绑定
 
-若您在 `start/global.php` 有绑定任何 `IoC`，请将它们复制到 `app/Providers/AppServiceProvider.php` 内的 `register` 方法，您可能需要引入 `App facade`。
+若您在 `start/global.php` 有绑定任何 [IoC](container.md)，请将它们复制到 `app/Providers/AppServiceProvider.php` 内的 `register` 方法，您可能需要引入 `App facade`。
 
 你可以选择将这些绑定，依照类型拆分到不同的服务提供者中。
 
@@ -179,7 +178,7 @@ use Authenticatable, CanResetPassword;
 
 ### 表单和 HTML 辅助函数
 
-如果您使用表单或 HTML 辅助函数，您将会看到以下错误 `class 'Form' not found` 或 `class 'Html' not found` 。Form 类以及 HTML 辅助函数在 Laravel 5.0 中已经废弃了；不过，这里有一些替代方法，比如基于社区驱动的，由 Laravel Collective 维护。
+如果您使用表单或 HTML 辅助函数，您将会看到以下错误 `class 'Form' not found` 或 `class 'Html' not found` 。Form 类以及 HTML 辅助函数在 Laravel 5.0 中已经废弃了；不过，这里有一些替代方法，比如基于社区驱动的，由 [Laravel Collective](http://laravelcollective.com/docs/5.0/html) 维护。
 
 比如，你可以在 `composer.json` 文件中的 `require` 区块增加 `"laravelcollective/html": "~5.0"`。
 
@@ -338,15 +337,15 @@ public function updateRememberToken(UserInterface $user, $token);
 
 ### 文件置换
 
-将你的 `public/index.php` 置换成 这个 repository 的干净版本。
+将你的 `public/index.php` 置换成 [这个 repository 的干净版本](https://github.com/laravel/laravel/blob/master/public/index.php)。
 
-同样的，将你的 `artisan` 置换成 这个 repository 的干净版本。
+同样的，将你的 `artisan` 置换成 [这个 repository 的干净版本](https://github.com/laravel/laravel/blob/master/artisan)。
 
 ### 添加设置文件及选项
 
-更新你在设置文件 `app/config/app.php` 里的 `aliases` 和 `providers` 数组。而更新的选项值可以在 这个文件 中找到。请确定将你后来加入自定和组件所需的 providers / aliases 加回数组中。
+更新你在设置文件 `app/config/app.php` 里的 `aliases` 和 `providers` 数组。而更新的选项值可以在 [这个文件](https://github.com/laravel/laravel/blob/master/app/config/app.php) 中找到。请确定将你后来加入自定和组件所需的 providers / aliases 加回数组中。
 
-从 这个 repository 增加 `app/config/remote.php` 文件。
+从 [这个 repository](https://github.com/laravel/laravel/blob/master/app/config/remote.php) 增加 `app/config/remote.php` 文件。
 
 在你的 `app/config/session.php` 增加新的选项 `expire_on_close`。而默认值为 `false`。
 
@@ -367,7 +366,7 @@ public function updateRememberToken(UserInterface $user, $token);
 
 密码提醒功能已经大幅修正拥有更大的弹性。你可以执行 Artisan 指令 `php artisan auth:reminders-controller` 来检查新的存根控制器。你也可以浏览 更新文件 然后相应的更新你的应用程序。
 
-更新你的 `app/lang/en/reminders.php` 语系文件来符合 这个新版文件。
+更新你的 `app/lang/en/reminders.php` 语系文件来符合 [这个新版文件](https://github.com/laravel/laravel/blob/master/app/lang/en/reminders.php)。
 
 ### 更新环境侦测
 

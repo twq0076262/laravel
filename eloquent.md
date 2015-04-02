@@ -50,7 +50,7 @@ Laravel 的 Eloquent ORM 提供了漂亮、简洁的 ActiveRecord 实现来和�
     var_dump($user->name);
 ```
 
-> **提示：** 所有[查询构造器](../queries)里的方法，查询 Eloquent 模型时也可以使用。
+> **提示：** 所有[查询构造器](queries.md)里的方法，查询 Eloquent 模型时也可以使用。
 
 #### 根据主键取出一条数据或抛出异常
 
@@ -122,7 +122,7 @@ Laravel 的 Eloquent ORM 提供了漂亮、简洁的 ActiveRecord 实现来和�
     $user = User::on('connection-name')->find(1);
 ```
 
-如果您在使用[读取 / 写入连接](../database#read-write-connections), 您可以通过如下命令来强制查询使用`写入` 连接：
+如果您在使用[读取 / 写入连接](database.md), 您可以通过如下命令来强制查询使用`写入` 连接：
 
 ```
     $user = User::onWriteConnection()->find(1);
@@ -519,7 +519,7 @@ Laravel 的 Eloquent ORM 提供了漂亮、简洁的 ActiveRecord 实现来和�
 *   [远层一对多关联](#has-many-through)
 *   [多态关联](#polymorphic-relations)
 *   [多态的多对多关联](#many-to-many-polymorphic-relations)
-
+<a name="one-to-one"></a>
 ### 一对一
 
 #### 定义一对一关联
@@ -599,7 +599,7 @@ SQL 会执行如下语句：
 
     }
 ```
-
+<a name="one-to-many"></a>
 ### 一对多
 
 一对多关联的例子如，一篇 Blog 文章可能「有很多」评论。可以像这样定义关联：
@@ -649,7 +649,7 @@ SQL 会执行如下语句：
 
     }
 ```
-
+<a name="many-to-many"></a>
 ### 多对多
 
 多对多关联更为复杂。这种关联的例子如，一个用户（ user ）可能用有很多身份（ role ），而一种身份可能很多用户都有。例如很多用户都是「管理者」。多对多关联需要用到三个数据库表：`users` ，`roles` ，和`role_user` 。`role_user` 枢纽表命名是以相关联的两个模型数据库表，依照字母顺序命名，枢纽表里面应该要有`user_id` 和`role_id` 字段。
@@ -743,7 +743,7 @@ SQL 会执行如下语句：
 
     }
 ```
-
+<a name="has-many-through"></a>
 ### 多态关联
 
 多态关联可以用一个简单的关联方法，就让一个模型同时关联多个模型。例如，您可能想让 photo 模型同时和一个 staff 或 order 模型关联。可以定义关联如下：
@@ -823,7 +823,7 @@ Photo 模型里的`imageable` 关联会返回`Staff` 或`Order` 实例，取决�
 ```
 
 要注意的重点是`photos` 数据库表的`imageable_id` 和`imageable_type`。在上面的例子里， ID 字段会包含 staff 或 order 的 ID，而 type 是拥有者的模型类名称。这就是让 ORM 在取得`imageable` 关联对象时，决定要哪一种模型对象的机制。
-
+<a name="many-to-many-polymorphic-relations"></a>
 ### 多态的多对多关联
 
 #### Polymorphic Many To Many Relation Table Structure 多态的多对多关联数据库表结构

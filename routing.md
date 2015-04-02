@@ -54,7 +54,7 @@ $url = url('foo');
 
 ## CSRF 保护
 
-Laravel 提供简易的方法，让您可以保护您的应用程序不受到 CSRF (跨网站请求伪造) 攻击。跨网站请求伪造是一种恶意的攻击，借以代表经过身份验证的用户执行未经授权的命令。
+Laravel 提供简易的方法，让您可以保护您的应用程序不受到 [CSRF (跨网站请求伪造)](http://en.wikipedia.org/wiki/Cross-site_request_forgery) 攻击。跨网站请求伪造是一种恶意的攻击，借以代表经过身份验证的用户执行未经授权的命令。
 
 Laravel 会自动在每一位用户的 `session` 中放置随机的 token ，这个 token 将被用来确保经过验证的用户是实际发出请求至应用程序的用户：
 
@@ -68,7 +68,7 @@ Laravel 会自动在每一位用户的 `session` 中放置随机的 token ，这
 ```
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 ```
-您不需要手动验证在 POST、PUT、DELETE 请求的 CSRF token。 `VerifyCsrfToken` HTTP 中间件将保存在 session 中的请求输入的 token 配对来验证 token 。
+您不需要手动验证在 POST、PUT、DELETE 请求的 CSRF token。 `VerifyCsrfToken` [HTTP 中间件](middleware.md)将保存在 session 中的请求输入的 token 配对来验证 token 。
 
 ### X-CSRF-TOKEN
 
@@ -353,4 +353,4 @@ abort(404);
 
 第二，您可以手动抛出 `Symfony\Component\HttpKernel\Exception\NotFoundHttpException` 的实体。
 
-有关如何处理 404 异常状况和自定响应的更多信息，可以参考错误章节内的文档。
+有关如何处理 404 异常状况和自定响应的更多信息，可以参考[错误](errors.md)章节内的文档。

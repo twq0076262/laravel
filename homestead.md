@@ -2,7 +2,7 @@
 
 ## 介绍
 
-Laravel 致力于让 PHP 开发体验更愉快，也包含你的本地开发环境。Vagrant 提供了一个简单、优雅的方式来管理与供应虚拟机。
+Laravel 致力于让 PHP 开发体验更愉快，也包含你的本地开发环境。[Vagrant](https://www.vagrantup.com/) 提供了一个简单、优雅的方式来管理与供应虚拟机。
 
 Laravel Homestead 是一个官方预载的 Vagrant「封装包」，提供你一个美好的开发环境，你不需要在你的本机端安装 PHP、HHVM、网页服务器或任何服务器软件。不用担心搞乱你的系统！Vagrant 封装包可以搞定一切。如果有什么地方出现故障，你可以在几分钟内快速的销毁并重建虚拟机。
 
@@ -26,19 +26,19 @@ Homestead 目前是构建且测试于 Vagrant 1.7 版本。
 - Redis
 - Memcached
 - Beanstalkd
-- Laravel Envoy
+- [Laravel Envoy](envoy.md)
 - Fabric + HipChat Extension
-- Blackfire Profiler
+- [Blackfire Profiler](#Blackfire_Profiler)
 
 ## 安装与配置
 
 ### 安装 VirtualBox / VMWare 与 Vagrant
 
-在启动你的 Homestead 环境之前，你必须先安装 VirtualBox 和 Vagrant. 两套软件在各平台都有提供易用的可视化安装程序。
+在启动你的 Homestead 环境之前，你必须先安装 [VirtualBox](https://www.virtualbox.org/wiki/Downloads) 和 [Vagrant](http://www.vagrantup.com/downloads.html). 两套软件在各平台都有提供易用的可视化安装程序。
 
 #### VMware
 
-除了 VirtualBox 之外, Homestead 也支持 VMware. 如果使用 VMware 作为 provider, 你需要购买 VMware Fusion / Desktop 以及 VMware Vagrant plug-in. VMware 提供了更快、性能更好的共享文件夹。
+除了 VirtualBox 之外, Homestead 也支持 VMware. 如果使用 VMware 作为 provider, 你需要购买 VMware Fusion / Desktop 以及 [VMware Vagrant plug-in](http://www.vagrantup.com/vmware). VMware 提供了更快、性能更好的共享文件夹。
 
 ### 增加 Vagrant 封装包
 
@@ -103,7 +103,7 @@ provider: virtualbox
 ```
 ssh-keygen -t rsa -C "you@homestead"
 ```
-在 Windows 下，你需要安装 Git 并且使用包含在 Git 里的 `Git Bash` 来执行上述的命令。另外你也可以使用 PuTTY 和 PuTTYgen。
+在 Windows 下，你需要安装 [Git](http://git-scm.com/) 并且使用包含在 Git 里的 `Git Bash` 来执行上述的命令。另外你也可以使用 [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 和 [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)。
 
 一旦你创建了一个 SSH 密钥，记得在你的 `Homestead.yaml` 文件中的 `authorize `属性指明密钥路径。
 
@@ -111,7 +111,7 @@ ssh-keygen -t rsa -C "you@homestead"
 
 `Homestead.yaml` 文件中的 `folders` 属性列出了所有你想在 Homestead 环境共享的文件夹列表。这些文件夹中的文件若有变动，他们将会同步在你的本机与 Homestead 环境里。你可以将你需要的共享文件夹都配置进去。
 
-如果要开启 NFS，只需要在 `folders` 中加入一个标识：
+如果要开启 [NFS](http://docs.vagrantup.com/v2/synced-folders/nfs.html)，只需要在 `folders` 中加入一个标识：
 
 ```
 folders:
@@ -123,7 +123,7 @@ folders:
 
 对 Nginx 不熟悉？没关系。`sites` 属性允许你简单的对应一个 `域名 `到一个 homestead 环境中的目录。一个例子的站点被配置在 `Homestead.yaml`文件中。同样的，你可以加任何你需要的站点到你的 Homestead 环境中。Homestead 可以为你每个进行中的 Laravel 应用提供方便的虚拟化环境。
 
-你可以通过配置 `hhvm` 属性为 `true` 来让虚拟站点支持 HHVM:
+你可以通过配置 `hhvm` 属性为 `true` 来让虚拟站点支持 [HHVM](http://hhvm.com/):
 
 ```
 sites:
@@ -210,10 +210,10 @@ ports:
       to: 777
       protocol: udp
 ```
-
+<a name="Blackfire_Profiler"></a>
 ## Blackfire Profiler
 
-Blackfire Profiler 是由 SensioLabs 创建的一个分析工具，它会自动的收集代码执行期间的相关数据，比如 RAM, CPU time, 和 disk I/O. 如果你使用 Homestead ，那么使用这个分析工具会变得非常简单。
+[Blackfire Profiler](https://blackfire.io/) 是由 SensioLabs 创建的一个分析工具，它会自动的收集代码执行期间的相关数据，比如 RAM, CPU time, 和 disk I/O. 如果你使用 Homestead ，那么使用这个分析工具会变得非常简单。
 
 blackfire 所需的包已经安装在 Homestead box 中，你只需要在 `Homestead.yaml` 文件中设置 Server ID 和 token ：
 
@@ -222,4 +222,4 @@ blackfire:
     - id: your-id
       token: your-token
 ```
-当你设定完 Blackfire 的凭证信息，使用 `homestead provision` 或者 `vagrant provision` 令配置生效。当然，你也需要通过阅读Blackfire 文档 来学习如何在你的浏览器中安装 Blackfire 扩展。
+当你设定完 Blackfire 的凭证信息，使用 `homestead provision` 或者 `vagrant provision` 令配置生效。当然，你也需要通过阅读[Blackfire 文档](https://blackfire.io/getting-started) 来学习如何在你的浏览器中安装 Blackfire 扩展。
