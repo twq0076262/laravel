@@ -51,7 +51,7 @@ Route::get('/foo', function()
 });
 ```
 
-你甚至可以把 Artisan 命令放到队列，他们会通过 [队列工作者](http://laravel.com/docs/5.0/queues) 在后台执行：
+你甚至可以把 Artisan 命令放到队列，他们会通过 [队列工作者](queues.md) 在后台执行：
 
 ```
 Route::get('/foo', function()
