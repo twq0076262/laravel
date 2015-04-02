@@ -144,4 +144,4 @@ session 配置文件中的「driver」定义了 session 数据将以哪种方式
 *   `memcached` /`redis` - sessions 将保存在一个高速缓存的系统中。
 *   `array` - sessions 将单纯的以 PHP 数组保存，只存活在当次请求。
 
-> **注意：** array 驱动典型应用在[unit tests](../testing) 环境下，所以不会留下任何 session 数据。
+> **注意：** array 驱动典型应用在[unit tests](testing.md) 环境下，所以不会留下任何 session 数据。

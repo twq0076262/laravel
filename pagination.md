@@ -18,7 +18,7 @@ $users = DB::table('users')->paginate(15);
 
 #### 对 Eloquent 模型分页
 
-您也可以对[Eloquent](../eloquent) 模型分页:
+您也可以对[Eloquent](eloquent.md) 模型分页:
 
 ```
 $allUsers = User::paginate(15);

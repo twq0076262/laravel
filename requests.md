@@ -13,7 +13,7 @@ $name = Request::input('name');
 
 ### 通过依赖注入
 
-要通过依赖注入的方式取得 HTTP 请求的实例，你必须在控制器中的构造函数或方法对该类使用类型提示。当前请求的实例将会自动由服务容器注入：
+要通过依赖注入的方式取得 HTTP 请求的实例，你必须在控制器中的构造函数或方法对该类使用类型提示。当前请求的实例将会自动由[服务容器](container.md)注入：
 
 ```
 <?php namespace App\Http\Controllers;
@@ -105,7 +105,7 @@ Laravel 可以让你保留这次的输入数据，直到下一次请求发送前
 
 ### 将输入数据存成一次性 Session
 
-`flash` 方法会将当前的输入数据存进 `session中`，所以下次用户发出请求时可以使用保存的数据：
+`flash` 方法会将当前的输入数据存进 [session](session.md)中，所以下次用户发出请求时可以使用保存的数据：
 
 ```
 Request::flash();
@@ -193,7 +193,7 @@ Request::file('photo')->move($destinationPath, $fileName);
 ```
 ### 其他上传文件的方法
 
-`UploadedFile` 的实例还有许多可用的方法，可以至该对象的 API 文档了解有关这些方法的详细信息。
+`UploadedFile` 的实例还有许多可用的方法，可以至[该对象的 API 文档](http://api.symfony.com/2.5/Symfony/Component/HttpFoundation/File/UploadedFile.html)了解有关这些方法的详细信息。
 
 
 ## 其他的请求信息

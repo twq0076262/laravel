@@ -4,9 +4,9 @@
 
 Laravel 的 Contracts 是一组定义了框架核心服务的接口（ interfaces ）。例如，`Queue` contract 定义了队列任务所需要的方法，而 `Mailer` contract 定义了发送 e-mail 需要的方法。
 
-在 Laravel 框架里，每个 contract 都提供了一个对应的实现。例如， Laravel 提供了有多种驱动的 `Queue` 的实现，而根据 SwiftMailer 实现了 `Mailer`。
+在 Laravel 框架里，每个 contract 都提供了一个对应的实现。例如， Laravel 提供了有多种驱动的 `Queue` 的实现，而根据 [SwiftMailer](http://swiftmailer.org/) 实现了 `Mailer`。
 
-Laravel 所有的 contracts 都放在各自的 Github repository。除了提供了所有可用的 contracts 一个快速的参考，也可以单独作为一个低耦合的扩展包让其他扩展包开发者使用。
+Laravel 所有的 contracts 都放在[各自的 Github](https://github.com/illuminate/contracts) repository。除了提供了所有可用的 contracts 一个快速的参考，也可以单独作为一个低耦合的扩展包让其他扩展包开发者使用。
 
 
 ## 为什么用 Contracts？
@@ -97,43 +97,45 @@ class Repository {
 
 以下是大部分 Laravel Contracts 的参考，以及相对应的 "facade"
 
-Contract	Laravel 4.x Facade
-Illuminate\Contracts\Auth\Guard	Auth
-Illuminate\Contracts\Auth\PasswordBroker	Password
-Illuminate\Contracts\Bus\Dispatcher	Bus
-Illuminate\Contracts\Cache\Repository	Cache
-Illuminate\Contracts\Cache\Factory	Cache::driver()
-Illuminate\Contracts\Config\Repository	Config
-Illuminate\Contracts\Container\Container	App
-Illuminate\Contracts\Cookie\Factory	Cookie
-Illuminate\Contracts\Cookie\QueueingFactory	Cookie::queue()
-Illuminate\Contracts\Encryption\Encrypter	Crypt
-Illuminate\Contracts\Events\Dispatcher	Event
-Illuminate\Contracts\Filesystem\Cloud	 
-Illuminate\Contracts\Filesystem\Factory	File
-Illuminate\Contracts\Filesystem\Filesystem	File
-Illuminate\Contracts\Foundation\Application	App
-Illuminate\Contracts\Hashing\Hasher	Hash
-Illuminate\Contracts\Logging\Log	Log
-Illuminate\Contracts\Mail\MailQueue	Mail::queue()
-Illuminate\Contracts\Mail\Mailer	Mail
-Illuminate\Contracts\Queue\Factory	Queue::driver()
-Illuminate\Contracts\Queue\Queue	Queue
-Illuminate\Contracts\Redis\Database	Redis
-Illuminate\Contracts\Routing\Registrar	Route
-Illuminate\Contracts\Routing\ResponseFactory	Response
-Illuminate\Contracts\Routing\UrlGenerator	URL
-Illuminate\Contracts\Support\Arrayable	 
-Illuminate\Contracts\Support\Jsonable	 
-Illuminate\Contracts\Support\Renderable	 
-Illuminate\Contracts\Validation\Factory	Validator::make()
-Illuminate\Contracts\Validation\Validator	 
-Illuminate\Contracts\View\Factory	View::make()
-Illuminate\Contracts\View\View	 
+| Contract                                        | Laravel 4.x Facade |
+| ----------------------------------------------- | ------------------ |
+| [IlluminateContractsAuthGuard](https://github.com/illuminate/contracts/blob/master/Auth/Guard.php)              | Auth               |
+| [IlluminateContractsAuthPasswordBroker](https://github.com/illuminate/contracts/blob/master/Auth/PasswordBroker.php)     | Password           |
+| [IlluminateContractsBusDispatcher](https://github.com/illuminate/contracts/blob/master/Bus/Dispatcher.php)          | Bus                |
+| [IlluminateContractsCacheRepository](https://github.com/illuminate/contracts/blob/master/Cache/Repository.php)       | Cache              |
+| [IlluminateContractsCacheFactory](https://github.com/illuminate/contracts/blob/master/Cache/Factory.php)           | Cache::driver()    |
+| [IlluminateContractsConfigRepository](https://github.com/illuminate/contracts/blob/master/Config/Repository.php)       | Config             |
+| [IlluminateContractsContainerContainer](https://github.com/illuminate/contracts/blob/master/Container/Container.php)     | App                |
+| [IlluminateContractsCookieFactory](https://github.com/illuminate/contracts/blob/master/Cookie/Factory.php)          | Cookie             |
+| [IlluminateContractsCookieQueueingFactory](https://github.com/illuminate/contracts/blob/master/Cookie/QueueingFactory.php)  | Cookie::queue()    |
+| [IlluminateContractsEncryptionEncrypter](https://github.com/illuminate/contracts/blob/master/Encryption/Encrypter.php)    | Crypt              |
+| [IlluminateContractsEventsDispatcher](https://github.com/illuminate/contracts/blob/master/Events/Dispatcher.php)       | Event              |
+| [IlluminateContractsFilesystemCloud](https://github.com/illuminate/contracts/blob/master/Filesystem/Cloud.php)        |                    |
+| [IlluminateContractsFilesystemFactory](https://github.com/illuminate/contracts/blob/master/Filesystem/Factory.php)      | File               |
+| [IlluminateContractsFilesystemFilesystem](https://github.com/illuminate/contracts/blob/master/Filesystem/Filesystem.php)   | File               |
+| [IlluminateContractsFoundationApplication](https://github.com/illuminate/contracts/blob/master/Foundation/Application.php)  | App                |
+| [IlluminateContractsHashingHasher](https://github.com/illuminate/contracts/blob/master/Hashing/Hasher.php)          | Hash               |
+| [IlluminateContractsLoggingLog](https://github.com/illuminate/contracts/blob/master/Logging/Log.php)             | Log                |
+| [IlluminateContractsMailMailQueue](https://github.com/illuminate/contracts/blob/master/Mail/MailQueue.php)          | Mail::queue()      |
+| [IlluminateContractsMailMailer](https://github.com/illuminate/contracts/blob/master/Mail/Mailer.php)             | Mail               |
+| [IlluminateContractsQueueFactory](https://github.com/illuminate/contracts/blob/master/Queue/Factory.php)           | Queue::driver()    |
+| [IlluminateContractsQueueQueue](https://github.com/illuminate/contracts/blob/master/Queue/Queue.php)             | Queue              |
+| [IlluminateContractsRedisDatabase](https://github.com/illuminate/contracts/blob/master/Redis/Database.php)          | Redis              |
+| [IlluminateContractsRoutingRegistrar](https://github.com/illuminate/contracts/blob/master/Routing/Registrar.php0)       | Route              |
+| [IlluminateContractsRoutingResponseFactory](https://github.com/illuminate/contracts/blob/master/Routing/ResponseFactory.php) | Response           |
+| [IlluminateContractsRoutingUrlGenerator](https://github.com/illuminate/contracts/blob/master/Routing/UrlGenerator.php)    | URL                |
+| [IlluminateContractsSupportArrayable](https://github.com/illuminate/contracts/blob/master/Support/Arrayable.php)       |                    |
+| [IlluminateContractsSupportJsonable](https://github.com/illuminate/contracts/blob/master/Support/Jsonable.php)        |                    |
+| [IlluminateContractsSupportRenderable](https://github.com/illuminate/contracts/blob/master/Support/Renderable.php)      |                    |
+| [IlluminateContractsValidationFactory](https://github.com/illuminate/contracts/blob/master/Validation/Factory.php)      | Validator::make()  |
+| [IlluminateContractsValidationValidator](https://github.com/illuminate/contracts/blob/master/Validation/Validator.php)    |                    |
+| [IlluminateContractsViewFactory](https://github.com/illuminate/contracts/blob/master/View/Factory.php)            | View::make()       |
+| [IlluminateContractsViewView](https://github.com/illuminate/contracts/blob/master/View/View.php)               |                    |
+
 
 ## 如何使用 Contracts
 
-所以，要如何实现一个 contract？实际上非常的简单。很多 Laravel 的类都是经由 service container 解析，包含控制器，事件监听，过滤器，队列任务，甚至是闭包。所以，要实现一个 contract，你可以在类的构造器使用「类型提示」解析类。例如，看下面的事件处理程序：
+所以，要如何实现一个 contract？实际上非常的简单。很多 Laravel 的类都是经由 [service container](container.md) 解析，包含控制器，事件监听，过滤器，队列任务，甚至是闭包。所以，要实现一个 contract，你可以在类的构造器使用「类型提示」解析类。例如，看下面的事件处理程序：
 
 ```
 <?php namespace App\Handlers\Events;
@@ -173,4 +175,4 @@ class CacheUserInformation {
 
 }
 ```
-当事件监听被解析时，服务容器会经由类构造器参数的类型提示，注入适当的值。要知道怎么注册更多服务容器，参考这个文档。
+当事件监听被解析时，服务容器会经由类构造器参数的类型提示，注入适当的值。要知道怎么注册更多服务容器，参考[这个文档](container.md)。

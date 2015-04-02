@@ -2,7 +2,7 @@
 
 ## 介绍
 
-Laravel Cashier 提供语义化，流畅的接口和 Stripe 的订购管理服务集成。它几乎处理了所有让人退步三舍的订购管理相关逻辑。除了基本的订购管理，Cashier 还可以处理折价券，订购转换，管理订购「数量」、服务有效期限，甚至产生收据的 PDF。
+Laravel Cashier 提供语义化，流畅的接口和 [Stripe](https://stripe.com/) 的订购管理服务集成。它几乎处理了所有让人退步三舍的订购管理相关逻辑。除了基本的订购管理，Cashier 还可以处理折价券，订购转换，管理订购「数量」、服务有效期限，甚至产生收据的 PDF。
 
 
 ## 配置文件
@@ -96,7 +96,7 @@ $user->subscription('monthly')->create($creditCardToken, [
 ]);
 ```
 
-想知道更多 Stripe 支持的额外字段，可以查看 Stripe 的在线文档 建立客户。
+想知道更多 Stripe 支持的额外字段，可以查看 Stripe 的在线文档 [建立客户](https://stripe.com/docs/api#create_customer)。
 
 
 ## 一次性付款
@@ -203,7 +203,7 @@ if ($user->subscribed())
     //
 }
 ```
-`subscribed` 方法很适合用在 路由中间件:
+`subscribed` 方法很适合用在 [路由中间件](middleware.md):
 
 ```
 public function handle($request, Closure $next)

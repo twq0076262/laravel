@@ -9,7 +9,7 @@
 
 ### 命名你的应用程序
 
-在安装 Laravel 后，你可以「命名」你的应用程序。默认情况下，`app` 的目录是在 `App` 的命名空间 下，通过 Composer 使用 PSR-4 自动载入规范 自动加载。不过，你可以轻松地通过 Artisan 命令` app:name `来修改命名空间，以配合你的应用程序名称。
+在安装 Laravel 后，你可以「命名」你的应用程序。默认情况下，`app` 的目录是在 `App` 的命名空间 下，通过 Composer 使用 [PSR-4 自动载入规范](https://github.com/PizzaLiu/PHP-FIG/blob/master/PSR-4-autoloader-cn.md) 自动加载。不过，你可以轻松地通过 Artisan 命令` app:name `来修改命名空间，以配合你的应用程序名称。
 
 举例来说，假设你的应用程序叫做「 Horsefly 」，你可以从安装的根目录执行下面的命令：
 
@@ -22,7 +22,7 @@ php artisan app:name Horsefly
 
 Laravel 几乎不需配置就可以马上使用。你可以自由的开始开发！然而，你可以浏览 `config/app.php` 文件和其他的文档。你可能希望依据你的本机而做更改，文件包含数个选项如`时区`和`语言环境`。
 
-一旦 Laravel 安装完成，你应该同时 配置本机环境。
+一旦 Laravel 安装完成，你应该同时 [配置本机环境](configuration.md)。
 
 ```
 注意： 你不应该在正式环境中将 app.debug 配置为 true 。绝对！千万不要！
@@ -53,7 +53,7 @@ $value = config('app.timezone');
 
 通常应用程序常常需要根据不同的执行环境而有不同的配置值。例如，你会希望在你的本机开发环境上会有与正式环境不同的缓存驱动（cache driver），通过配置文件，就可以轻松完成。
 
-Laravel 通过 DotEnv Vance Lucas 写的一个 PHP 类库。 在全新安装好的 Laravel 里，你的应用程序的根目录下会包含一个 `.env.example` 文件。如果你通过 Composer 安装 Laravel，这个文件将自动被命名为 `.env`，不然你应该手动更改文件名。
+Laravel 通过 [DotEnv](https://github.com/vlucas/phpdotenv) Vance Lucas 写的一个 PHP 类库。 在全新安装好的 Laravel 里，你的应用程序的根目录下会包含一个 `.env.example` 文件。如果你通过 Composer 安装 Laravel，这个文件将自动被命名为 `.env`，不然你应该手动更改文件名。
 
 当你的应用程序收到请求，这个文件所有的变量会被加载到 `$_ENV` 这个 PHP 超级全局变量里。你可以使用辅助方法 `env` 查看这些变量。事实上，如果你查看过 Laravel 配置文件，你会注意到几个选项已经在使用这个辅助方法！
 
@@ -82,7 +82,7 @@ if ($app->environment('local', 'staging'))
 }
 ```
 
-如果想取得应用程序的实例，可以通过服务容器的 `Illuminate\Contracts\Foundation\Application contract` 来取得。当然，如果你想在服务提供者中使用，应用程序实例可以通过实例变量 `$this->app` 取得。
+如果想取得应用程序的实例，可以通过[服务容器](container.md)的 `Illuminate\Contracts\Foundation\Application contract` 来取得。当然，如果你想在[服务提供者](providers.md)中使用，应用程序实例可以通过实例变量 `$this->app` 取得。
 
 也能通过 `App` facade 或者辅助方法 `app` 取得应用程序实例：
 
@@ -119,7 +119,7 @@ php artisan up
 
 ### 维护模式与队列
 
-当应用程序处于维护模式中，将不会处理任何队列工作。所有的队列工作将会在应用程序离开维护模式后继续被进行。
+当应用程序处于维护模式中，将不会处理任何[队列](queues.md)工作。所有的队列工作将会在应用程序离开维护模式后继续被进行。
 
 
 ## 优雅链接
@@ -147,4 +147,4 @@ location / {
     try_files $uri $uri/ /index.php?$query_string;
 }
 ```
-当然，如果你使用 Homestead 的话，优雅链接会自动的帮你配置完成。
+当然，如果你使用 [Homestead](homestead.md) 的话，优雅链接会自动的帮你配置完成。

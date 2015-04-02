@@ -9,7 +9,7 @@
 
 ## 简介
 
-Laravel Elixir 提供了简洁流畅的 API，让你能够为你的 Laravel 应用程序定义基本的 [Gulp][62] 任务。Elixir 支持许多常见的 CSS 与 JavaScrtip 预处理器，甚至包含了测试工具。
+Laravel Elixir 提供了简洁流畅的 API，让你能够为你的 Laravel 应用程序定义基本的 [Gulp](http://gulpjs.com/) 任务。Elixir 支持许多常见的 CSS 与 JavaScrtip 预处理器，甚至包含了测试工具。
 
 如果你曾经对于使用 Gulp 及编译资源感到困惑，那么你绝对会爱上 Laravel Elixir！
 
@@ -23,11 +23,11 @@ Laravel Elixir 提供了简洁流畅的 API，让你能够为你的 Laravel 应�
     node -v
 ```
 
-默认情况下，Laravel Homestead 会包含你所需的一切；当然，如果你没有使用 Vagrant，那么你可以浏览 [Node 的下载页][63]进行安装。别担心，安装是很简单又快速的！
+默认情况下，Laravel Homestead 会包含你所需的一切；当然，如果你没有使用 Vagrant，那么你可以浏览 [Node 的下载页](https://nodejs.org/download/)进行安装。别担心，安装是很简单又快速的！
 
 ### Gulp
 
-接着你需要全局安装 [Gulp][62] 的 NPM 安装包，如这样：
+接着你需要全局安装 [Gulp](http://gulpjs.com/) 的 NPM 安装包，如这样：
 
 ```
     npm install --global gulp

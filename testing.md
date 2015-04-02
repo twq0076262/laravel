@@ -219,7 +219,7 @@ $this->seed();
 $this->seed($connection);
 ```
 
-更多建立填充数据的信息可以在文档的[迁移与数据填充](../../migrations#database-seeding) 部分找到。
+更多建立填充数据的信息可以在文档的[迁移与数据填充](migrations.md) 部分找到。
 
 ## 重置应用程序
 

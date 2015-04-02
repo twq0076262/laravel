@@ -2,7 +2,7 @@
 
 ## 介绍
 
-Facades 提供一个静态接口给在应用程序的 服务容器 中可以取用的类。Laravel 附带许多 facades，甚至你可能已经在不知情的状况下使用过它们！Laravel 的「facades」作为在 IoC 容器里面的基础类的静态代理，提供的语法有简洁、易表达的优点，同时维持比传统的静态方法更高的可测试性和弹性。
+Facades 提供一个静态接口给在应用程序的 [服务容器](container.md) 中可以取用的类。Laravel 附带许多 facades，甚至你可能已经在不知情的状况下使用过它们！Laravel 的「facades」作为在 IoC 容器里面的基础类的静态代理，提供的语法有简洁、易表达的优点，同时维持比传统的静态方法更高的可测试性和弹性。
 
 有时，你或许会希望为应用程序和扩展包建立自己的 facades，所以让我们来探索这些类的概念、开发和用法。
 
@@ -104,7 +104,7 @@ App::bind('payment', function()
     return new \PaymentGateway\Payment;
 });
 ```
-注册这个绑定的好方式是建立新的 服务提供者 命名为 `PaymentServiceProvider`，并把这个绑定加到 `register` 方法。然后你可以配置 Laravel 从 `config/app.php` 配置文件加载你的服务提供者。
+注册这个绑定的好方式是建立新的 [服务提供者](container.md)  命名为 `PaymentServiceProvider`，并把这个绑定加到 `register` 方法。然后你可以配置 Laravel 从 `config/app.php` 配置文件加载你的服务提供者。
 
 接下来，我们可以建立我们自己的 facade 类：
 
@@ -130,48 +130,49 @@ Payment::process();
 
 ## 模拟 Facades
 
-单元测试是为什么现在 facades 采用这样的工作方式的主要因素。事实上，可测试性甚至是 facades 存在的主要理由。想要获得更多信息，请查看文档的 模拟 facades 章节。
+单元测试是为什么现在 facades 采用这样的工作方式的主要因素。事实上，可测试性甚至是 facades 存在的主要理由。想要获得更多信息，请查看文档的 [模拟 facades](facades.md) 章节。
 
 
 ## Facade 类参考
 
 你将会在下面找到每一个 facade 和它的基础类。这是个可以从一个给定的 facade 根源快速地深入 API 文档的有用工具。可应用的 IoC 绑定 关键字也包含在里面。
 
-Facade	Class	IoC Binding
-App	Illuminate\Foundation\Application	app
-Artisan	Illuminate\Console\Application	artisan
-Auth	Illuminate\Auth\AuthManager	auth
-Auth (实例)	Illuminate\Auth\Guard	
-Blade	Illuminate\View\Compilers\BladeCompiler	blade.compiler
-Bus	Illuminate\Contracts\Bus\Dispatcher	
-Cache	Illuminate\Cache\Repository	cache
-Config	Illuminate\Config\Repository	config
-Cookie	Illuminate\Cookie\CookieJar	cookie
-Crypt	Illuminate\Encryption\Encrypter	encrypter
-DB	Illuminate\Database\DatabaseManager	db
-DB (实例)	Illuminate\Database\Connection	
-Event	Illuminate\Events\Dispatcher	events
-File	Illuminate\Filesystem\Filesystem	files
-Hash	Illuminate\Contracts\Hashing\Hasher	hash
-Input	Illuminate\Http\Request	request
-Lang	Illuminate\Translation\Translator	translator
-Log	Illuminate\Log\Writer	log
-Mail	Illuminate\Mail\Mailer	mailer
-Password	Illuminate\Auth\Passwords\PasswordBroker	auth.password
-Queue	Illuminate\Queue\QueueManager	queue
-Queue (实例)	Illuminate\Queue\QueueInterface	
-Queue (基础类)	Illuminate\Queue\Queue	
-Redirect	Illuminate\Routing\Redirector	redirect
-Redis	Illuminate\Redis\Database	redis
-Request	Illuminate\Http\Request	request
-Response	Illuminate\Contracts\Routing\ResponseFactory	
-Route	Illuminate\Routing\Router	router
-Schema	Illuminate\Database\Schema\Blueprint	
-Session	Illuminate\Session\SessionManager	session
-Session (实例)	Illuminate\Session\Store	
-Storage	Illuminate\Contracts\Filesystem\Factory	filesystem
-URL	Illuminate\Routing\UrlGenerator	url
-Validator	Illuminate\Validation\Factory	validator
-Validator (实例)	Illuminate\Validation\Validator	
-View	Illuminate\View\Factory	view
-View (实例)	Illuminate\View\View	
+| Facade         | Class                                           | IoC Binding      |
+| -------------- | ----------------------------------------------- | ---------------- |
+| App            | [IlluminateFoundationApplication](http://laravel.com/api/5.0/Illuminate/Foundation/Application.html)           | `app`            |
+| Artisan        | [IlluminateConsoleApplication](http://laravel.com/api/5.0/Illuminate/Console/Application.html)              | `artisan`        |
+| Auth           | [IlluminateAuthAuthManager](http://laravel.com/api/5.0/Illuminate/Auth/AuthManager.html)                 | `auth`           |
+| Auth (实例)      | [IlluminateAuthGuard](http://laravel.com/api/5.0/Illuminate/Auth/Guard.html)                       |                  |
+| Blade          | [IlluminateViewCompilersBladeCompiler](http://laravel.com/api/5.0/Illuminate/View/Compilers/BladeCompiler.html)      | `blade.compiler` |
+| Bus            | [IlluminateContractsBusDispatcher](http://laravel.com/api/5.0/Illuminate/Contracts/Bus/Dispatcher.html)          |                  |
+| Cache          | [IlluminateCacheRepository](http://laravel.com/api/5.0/Illuminate/Cache/Repository.html)                 | `cache`          |
+| Config         | [IlluminateConfigRepository](http://laravel.com/api/5.0/Illuminate/Config/Repository.html)                | `config`         |
+| Cookie         | [IlluminateCookieCookieJar](http://laravel.com/api/5.0/Illuminate/Cookie/CookieJar.html)                 | `cookie`         |
+| Crypt          | [IlluminateEncryptionEncrypter](http://laravel.com/api/5.0/Illuminate/Encryption/Encrypter.html)             | `encrypter`      |
+| DB             | [IlluminateDatabaseDatabaseManager](http://laravel.com/api/5.0/Illuminate/Database/DatabaseManager.html)         | `db`             |
+| DB (实例)        | [IlluminateDatabaseConnection](http://laravel.com/api/5.0/Illuminate/Database/Connection.html)              |                  |
+| Event          | [IlluminateEventsDispatcher](http://laravel.com/api/5.0/Illuminate/Events/Dispatcher.html)                | `events`         |
+| File           | [IlluminateFilesystemFilesystem](http://laravel.com/api/5.0/Illuminate/Filesystem/Filesystem.html)            | `files`          |
+| Hash           | [IlluminateContractsHashingHasher](http://laravel.com/api/5.0/Illuminate/Contracts/Hashing/Hasher.html)          | `hash`           |
+| Input          | [IlluminateHttpRequest](http://laravel.com/api/5.0/Illuminate/Http/Request.html)                     | `request`        |
+| Lang           | [IlluminateTranslationTranslator](http://laravel.com/api/5.0/Illuminate/Translation/Translator.html)           | `translator`     |
+| Log            | [IlluminateLogWriter](http://laravel.com/api/5.0/Illuminate/Log/Writer.html)                       | `log`            |
+| Mail           | [IlluminateMailMailer](http://laravel.com/api/5.0/Illuminate/Mail/Mailer.html)                      | `mailer`         |
+| Password       | [IlluminateAuthPasswordsPasswordBroker](http://laravel.com/api/5.0/Illuminate/Auth/Passwords/PasswordBroker.html)     | `auth.password`  |
+| Queue          | [IlluminateQueueQueueManager](http://laravel.com/api/5.0/Illuminate/Queue/QueueManager.html)               | `queue`          |
+| Queue (实例)     | [IlluminateQueueQueueInterface](http://laravel.com/api/5.0/Illuminate/Queue/QueueInterface.html)             |                  |
+| Queue (基础类)    | [IlluminateQueueQueue](http://laravel.com/api/5.0/Illuminate/Queue/Queue.html)                      |                  |
+| Redirect       | [IlluminateRoutingRedirector](http://laravel.com/api/5.0/Illuminate/Routing/Redirector.html)               | `redirect`       |
+| Redis          | [IlluminateRedisDatabase](http://laravel.com/api/5.0/Illuminate/Redis/Database.html)                   | `redis`          |
+| Request        | [IlluminateHttpRequest](http://laravel.com/api/5.0/Illuminate/Http/Request.html)                     | `request`        |
+| Response       | [IlluminateContractsRoutingResponseFactory](http://laravel.com/api/5.0/Illuminate/Contracts/Routing/ResponseFactory.html) |                  |
+| Route          | [IlluminateRoutingRouter](http://laravel.com/api/5.0/Illuminate/Routing/Router.html)                   | `router`         |
+| Schema         | [IlluminateDatabaseSchemaBlueprint](http://laravel.com/api/5.0/Illuminate/Database/Schema/Blueprint.html)         |                  |
+| Session        | [IlluminateSessionSessionManager](http://laravel.com/api/5.0/Illuminate/Session/SessionManager.html)           | `session`        |
+| Session (实例)   | [IlluminateSessionStore](http://laravel.com/api/5.0/Illuminate/Session/Store.html)                    |                  |
+| Storage        | [IlluminateContractsFilesystemFactory](http://laravel.com/api/5.0/Illuminate/Contracts/Filesystem/Factory.html)      | `filesystem`     |
+| URL            | [IlluminateRoutingUrlGenerator](http://laravel.com/api/5.0/Illuminate/Routing/UrlGenerator.html)            | `url`            |
+| Validator      | [IlluminateValidationFactory](http://laravel.com/api/5.0/Illuminate/Validation/Factory.html)               | `validator`      |
+| Validator (实例) | [IlluminateValidationValidator](http://laravel.com/api/5.0/Illuminate/View/Factory.html)             |                  |
+| View           | [IlluminateViewFactory](http://laravel.com/api/5.0/Illuminate/View/View.html)                     | `view`           |
+| View (实例)      | [IlluminateViewView](http://laravel.com/api/5.0/Illuminate/View/View.html)                       |                  |

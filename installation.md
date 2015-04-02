@@ -9,7 +9,7 @@ Laravel 框架使用 Composer 来管理其依赖性。所以，在你使用 Lara
 
 通过 Laravel 安装工具
 
-首先，使用 Composer 下载 Laravel 安装包：
+首先，使用 [Composer](https://getcomposer.org/) 下载 Laravel 安装包：
 
 ```
 composer global require "laravel/installer=~1.1"
@@ -56,11 +56,10 @@ Laravel 框架有一些系统上的需求：
 
 Laravel 几乎不需配置就可以马上使用。你可以自由的开始开发！然而，你可以查看 `config/app.php` 文件和其他的文档。你可能希望根据你的应用程序而做更改，文件包含数个选项如 `时区` 和 `语言环境`。
 
-一旦 Laravel 安装完成，你应该同时 配置本地环境。
+一旦 Laravel 安装完成，你应该同时 [配置本地环境](configuration.md)。
 
-```
-注意： 你不应该在正式环境中将 app.debug 配置为 true。绝对！千万不要！
-```
+
+**`注意： 你不应该在正式环境中将 app.debug 配置为 true。绝对！千万不要！`**
 
 权限
 
@@ -92,4 +91,4 @@ location / {
     try_files $uri $uri/ /index.php?$query_string;
 }
 ```
-当然，如果你使用 Homestead 的话，优雅链接会自动的帮你配置完成。
+当然，如果你使用 [Homestead](homestead.md) 的话，优雅链接会自动的帮你配置完成。

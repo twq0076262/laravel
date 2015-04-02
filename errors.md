@@ -1,15 +1,10 @@
 # 错误与日志
 
-* 配置
-* 错误处理
-* HTTP 异常
-* 日志
-
 ## 配置
 
 应用程序的日志功能配置在 `IlluminateFoundationBootstrapConfigureLogging` 启动类中。这个类使用 `config/app.php` 配置文件的 `log` 配置选项。
 
-日志工具默认使用每天的日志文件；然而，你可以依照需求自定义这个行为。因为 Laravel 使用流行的 [Monolog][62] 日志函数库，你可以利用很多 Monolog 提供的处理进程。
+日志工具默认使用每天的日志文件；然而，你可以依照需求自定义这个行为。因为 Laravel 使用流行的 [Monolog](https://github.com/Seldaek/monolog) 日志函数库，你可以利用很多 Monolog 提供的处理进程。
 
 例如，如果你想要使用单一日志文件，而不是每天一个日志文件，你可以对 `config/app.php` 配置文件做下面的变更：
 
@@ -29,7 +24,7 @@ Laravel 提供立即可用的 `single` 、 `daily` 和 `syslog` 日志模式。�
 
 所有的异常都由 `AppExceptionsHandler` 类处理。这个类包含两个方法： `report` 和 `render` 。
 
-`report` 方法用来记录异常或把异常传递到外部服务，例如： [BugSnag][63] 。默认情况下， `report` 方法只基本实现简单地传递异常到父类并于父类记录异常。然而，你可以依你所需自由地记录异常。如果你需要使用不同的方法来报告不同类型的异常，你可以使用 PHP 的 `instanceof` 比较运算符：
+`report` 方法用来记录异常或把异常传递到外部服务，例如： [BugSnag](https://github.com/Seldaek/monolog) 。默认情况下， `report` 方法只基本实现简单地传递异常到父类并于父类记录异常。然而，你可以依你所需自由地记录异常。如果你需要使用不同的方法来报告不同类型的异常，你可以使用 PHP 的 `instanceof` 比较运算符：
 
 ```
     /**
@@ -77,7 +72,7 @@ Laravel 提供立即可用的 `single` 、 `daily` 和 `syslog` 日志模式。�
 
 ## 日志
 
-Laravel 日志工具在强大的 [Monolog][64] 函数库上提供一层简单的功能。Laravel 默认为应用程序建立每天的日志文件在 `storage/logs` 目录。你可以像这样把信息写到日志：
+Laravel 日志工具在强大的 [Monolog](https://github.com/seldaek/monolog) 函数库上提供一层简单的功能。Laravel 默认为应用程序建立每天的日志文件在 `storage/logs` 目录。你可以像这样把信息写到日志：
 
 ```
     Log::info('This is some useful information.');
@@ -87,7 +82,7 @@ Laravel 日志工具在强大的 [Monolog][64] 函数库上提供一层简单的
     Log::error('Something is really going wrong.');
 ```
 
-日志工具提供定义在 [RFC 5424][65] 的七个级别：**debug**、**info**、**notice**、**warning**、**error**、**critical** 和 **alert**。
+日志工具提供定义在 [RFC 5424](http://tools.ietf.org/html/rfc5424)的七个级别：**debug**、**info**、**notice**、**warning**、**error**、**critical** 和 **alert**。
 
 也可以传入上下文相关的数据数组到日志方法里：
 

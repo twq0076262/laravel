@@ -10,15 +10,15 @@
 
 Laravel 框架的源代码托管在 Github， 以下列出了每个 Laravel 相关项目仓库的连接:
 
-Laravel Framework
-Laravel Application
-Laravel Documentation
-Laravel Cashier
-Laravel Envoy
-Laravel Homestead
-Laravel Homestead Build Scripts
-Laravel Website
-Laravel Art
+* [Laravel Framework](https://github.com/laravel/framework)
+* [Laravel Application](https://github.com/laravel/laravel)
+* [Laravel Documentation](https://github.com/laravel/docs)
+* [Laravel Cashier](https://github.com/laravel/cashier)
+* [Laravel Envoy](https://github.com/laravel/envoy)
+* [Laravel Homestead](https://github.com/laravel/homestead)
+* [Laravel Homestead Build Scripts](https://github.com/laravel/settler)
+* [Laravel Website](https://github.com/laravel/laravel.com)
+* [Laravel Art](https://github.com/laravel/art)
 
 ## 核心开发讨论区
 
@@ -45,12 +45,12 @@ Laravel Art
 
 ## 代码风格
 
-Laravel 框架遵循 PSR-4 和 PSR-1 代码标准。除了这些以外，如下的代码标准也应该被遵守:
+Laravel 框架遵循 [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md) 和 [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md) 代码标准。除了这些以外，如下的代码标准也应该被遵守:
 
 类命名空间的声明必须与 `<?php` 处在同一行。
 
 类的起始花括号 { 必须与类名处在同一行。
 
-函数和控制结构必须使用 Allman 样式 括起来。
+函数和控制结构必须使用 [Allman 样式](http://en.wikipedia.org/wiki/Indent_style#Allman_style) 括起来。
 
 缩进使用制表符，对齐使用空格。

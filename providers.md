@@ -13,7 +13,7 @@
 
 ## 基本提供者例子
 
-所有的服务提供者都应继承 `Illuminate\Support\ServiceProvider`此一类。在这个抽象类中，至少必须定义一个方法： `register` 。在 `register` 方法中，应该只绑定服务到服务容器之中。你永远不该试图在 `register` 方法中注册任何事件监听器、路由或任何其他功能。
+所有的服务提供者都应继承 `Illuminate\Support\ServiceProvider`此一类。在这个抽象类中，至少必须定义一个方法： `register` 。在 `register` 方法中，应该只绑定服务到[服务容器](container.md)之中。你永远不该试图在 `register` 方法中注册任何事件监听器、路由或任何其他功能。
 
 Artisan 命令行接口可以很容易地通过 `make:provider` 产生新的提供者：
 
@@ -49,7 +49,7 @@ class RiakServiceProvider extends ServiceProvider {
 }
 ```
 
-这个服务提供者只定义了一个 `register` 方法，并在服务容器中使用此方法定义了一份 `Riak\Contracts\Connection` 的实现。若你还不了解服务容器是如何运作的，不用担心，我们很快会提到它。
+这个服务提供者只定义了一个 `register` 方法，并在服务容器中使用此方法定义了一份 `Riak\Contracts\Connection` 的实现。若你还不了解服务容器是如何运作的，不用担心，[我们很快会提到它](container.md)。
 
 此类位于 `App\Providers` 命名空间之下，因为这是 Laravel 中默认服务提供者所在的位置。然而，你可以随自己的需要改变它。你的服务提供者可被置于任何 Composer 能自动加载的位置。
 
@@ -113,7 +113,7 @@ public function boot(Dispatcher $events)
 ```
 ## 缓载提供者
 
-若你的提供者仅仅用于绑定注册到服务容器，你可以选择延缓其注册，直到真正需要其中注册的绑定才加载。延缓像这样的提供者加载可增进应用程序的性能，因为这样就不用每个请求都从文件系统中将其加载。
+若你的提供者仅仅用于绑定注册到[服务容器](container.md)，你可以选择延缓其注册，直到真正需要其中注册的绑定才加载。延缓像这样的提供者加载可增进应用程序的性能，因为这样就不用每个请求都从文件系统中将其加载。
 
 要延缓提供者加载，将 `defer` 性质设为 `true`，并定义一个 `provides` 方法。 `provides` 方法应返回提供者所注册的服务容器绑定。
 

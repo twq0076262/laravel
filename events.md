@@ -1,8 +1,5 @@
 # 事件
 
-* 基本用法
-* 事件处理队列
-* 事件订阅者
 
 ## 基本用法
 
@@ -84,7 +81,7 @@ Laravel 里的 `EventServiceProvider` 提供了一个方便的地方注册所有
 
 ## 事件处理队列
 
-需要把事件处理程序放到 [队列][49] 吗？这不能变得再更简单了。当你产生处理程序，简单地使用 `\--queued` 旗标：
+需要把事件处理程序放到 [队列](queues.md) 吗？这不能变得再更简单了。当你产生处理程序，简单地使用 `\--queued` 旗标：
 
 ```
     php artisan handler:event SendPurchaseConfirmation --event=PodcastWasPurchased --queued
@@ -158,7 +155,7 @@ Laravel 里的 `EventServiceProvider` 提供了一个方便的地方注册所有
 ```
 
 
-你也可以使用 [服务容器][26] 自动解析订阅者。简单地传递订阅者的名字给 `subscribe` 方法就可以做到：
+你也可以使用 [服务容器](container.md) 自动解析订阅者。简单地传递订阅者的名字给 `subscribe` 方法就可以做到：
 
 ```
 Event::subscribe('UserEventHandler');

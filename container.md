@@ -53,7 +53,7 @@ class PurchasePodcastHandler {
 
 ### 绑定
 
-几乎你所有服务容器将与已注册的服务提供者绑定，这些例子都在情境(context)使用容器做说明，如果应用程序其它地方需要容器实例，如工厂(factory)，能以类型提示 Illuminate\Contracts\Container\Container 注入一个容器实例。另外，你可以使用 App facade 访问容器。
+几乎你所有服务容器将与已注册的[服务提供者](providers.md)绑定，这些例子都在情境(context)使用容器做说明，如果应用程序其它地方需要容器实例，如工厂(factory)，能以类型提示 Illuminate\Contracts\Container\Container 注入一个容器实例。另外，你可以使用 App facade 访问容器。
 
 ### 注册基本解析器
 
@@ -144,7 +144,7 @@ class UserController extends Controller {
 
 ### 注入具体依赖
 
-服务容器有个非常强大特色，能够绑定特定实例的接口。举例，假设我们应用程序要集成 Pusher 服务去收发即时事件，如果使用 Pusher 的 PHP SDK，可以在类注入一个 Pusher 客户端实例：
+服务容器有个非常强大特色，能够绑定特定实例的接口。举例，假设我们应用程序要集成 [Pusher](https://pusher.com/) 服务去收发即时事件，如果使用 Pusher 的 PHP SDK，可以在类注入一个 Pusher 客户端实例：
 
 ```
 <?php namespace App\Handlers\Commands;
@@ -230,7 +230,7 @@ $this->app->bind('App\Contracts\EventPusher', 'App\Services\PusherEventPusher');
 
 ## 上下文绑定
 
-有时候，你可能会有两个类需要用到同一个接口，但是你希望为每个类注入不同的接口实现。例如当我们的系统收到一个新的订单时，我们需要使用 PubNub 来代替 Pusher 发送消息。Laravel 提供了一个简单便利的接口来定义以上的行为：
+有时候，你可能会有两个类需要用到同一个接口，但是你希望为每个类注入不同的接口实现。例如当我们的系统收到一个新的订单时，我们需要使用 [PubNub](http://www.pubnub.com/) 来代替 Pusher 发送消息。Laravel 提供了一个简单便利的接口来定义以上的行为：
 
 ```
 $this->app->when('App\Handlers\Commands\CreateOrderHandler')
@@ -308,7 +308,7 @@ class OrdersController extends Controller {
 }
 ```
 
-在这个例子中，`OrderRepository` 类将被自动注入到控制器中。这意味着在进行 单元测试 时，我们可以绑定一个假的 `OrderRepository` 到容器中来代替我们对数据库的真实操作，避免对真实数据库的影响。
+在这个例子中，`OrderRepository` 类将被自动注入到控制器中。这意味着在进行 [单元测试](testing.md) 时，我们可以绑定一个假的 `OrderRepository` 到容器中来代替我们对数据库的真实操作，避免对真实数据库的影响。
 
 ### 使用容器的其他几个例子
 

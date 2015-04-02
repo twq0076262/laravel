@@ -33,8 +33,8 @@ $collection = collect([1, 2, 3]);
 $collection = Collection::make([1, 2, 3]);
 ```
 
-当然，Eloquent 的对象集合总是以 `Collection` 实例返回；然而，你可以在应用程序的任何地方方便的使用 `Collection` 类。
+当然，[Eloquent](eloquent.md) 的对象集合总是以 `Collection` 实例返回；然而，你可以在应用程序的任何地方方便的使用 `Collection` 类。
 
 ### 探索集合
 
-作为列出集合可以用的所有方法 (有很多) 的替代，请查看 类的 API 文档！
+作为列出集合可以用的所有方法 (有很多) 的替代，请查看 [类的 API 文档](http://laravel.com/api/master/Illuminate/Support/Collection.html)！

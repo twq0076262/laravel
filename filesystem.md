@@ -1,13 +1,9 @@
 # 文件系统 / 云存储
 
-* 简介
-* 配置文件
-* 基本用法
-* 自定义文件系统
 
 ## 简介
 
-Laravel 有很棒的文件系统抽象层，是基于 Frank de Jonge 的 [Flysystem][62] 扩展包。 Laravel 集成的 Flysystem 提供了简单的接口，可以操作本地端空间、 Amazon S3 、 Rackspace Cloud Storage 。更好的是，它可以非常简单的切换不同保存方式，但仍使用相同的 API 操作！
+Laravel 有很棒的文件系统抽象层，是基于 Frank de Jonge 的 [Flysystem](https://github.com/thephpleague/flysystem) 扩展包。 Laravel 集成的 Flysystem 提供了简单的接口，可以操作本地端空间、 Amazon S3 、 Rackspace Cloud Storage 。更好的是，它可以非常简单的切换不同保存方式，但仍使用相同的 API 操作！
 
 ## 配置文件
 
@@ -27,7 +23,7 @@ Laravel 有很棒的文件系统抽象层，是基于 Frank de Jonge 的 [Flysys
 ```
 ## 基本用法
 
-可以用 `Storage` facade 操作所有写在配置文件里的硬盘。或者是，你也可以将 `IlluminateContractsFilesystemFactory` 类型提示写到任何类里，经由 Laravel 的 [服务容器][26] 解析。
+可以用 `Storage` facade 操作所有写在配置文件里的硬盘。或者是，你也可以将 `IlluminateContractsFilesystemFactory` 类型提示写到任何类里，经由 Laravel 的 [服务容器](container.md) 解析。
 
 #### 取得一个特定硬盘
 
