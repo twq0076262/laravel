@@ -1,8 +1,12 @@
 # Laravel 官方文档中文版
 
-Laravel是一套简洁、优雅的PHP Web开发框架。它可以让你从面条一样杂乱的代码中解脱出来；它可以帮你构建一个完美的网络APP，而且每行代码都可以简洁、富于表达力。
+Laravel 是一套为网页艺术家创造的，简洁、优雅的 PHP Web 开发框架。本教程翻译自 [Laravel V5.0](http://laravel.com/docs/5.0) 官方英文文档。
 
-**Laravel强大现代化功能:**
+|更新日期    |版本    
+|------------|----------
+|2015-04-01  |Laravel V5.0
+
+**Laravel 强大现代化功能：**
 
 1. 简洁明了、优雅的语法。    
 想要源代码优雅、简约、且易读？你会发现完全符合你的需求，因为 Laravel 是专门为你设计的，如果需要任何入门帮助，请查阅 Laracasts 还有我们 优秀的文档。
@@ -13,7 +17,7 @@ Laravel是一套简洁、优雅的PHP Web开发框架。它可以让你从面条
 3. 现代化的工具，仿佛在施展魔术。      
 通过 神奇的 ORM、轻松上手的 路由器、强大的 队列操作库 和 简便的用户认证系统，这些工具让你感受到现代化 PHP 的高可维护性和便捷性。我们尽力打造这些小东西, 只为了帮助你构建伟大的应用。
 
-本教程部分章节内容来源于 [Laravel 中文网](http://www.golaravel.com/laravel/docs/5.0/)，官方英文原文请见 [Laravel](http://laravel.com/docs/5.0)。
+本教程内容来源于 [golaravel.com](http://www.golaravel.com/laravel/docs/5.0/)。
 
 
 
