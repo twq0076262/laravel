@@ -182,7 +182,7 @@ Laravel 现在包含了强大的 [Flysystem](https://github.com/thephpleague/fly
 ```
 Storage::put('file.txt', 'contents');
 ```
-更多关于 Laravel 文件系统集成，参考[完整文档](Filesystem.md)。
+更多关于 Laravel 文件系统集成，参考[完整文档](filesystem.md)。
 
 Form Requests
 
